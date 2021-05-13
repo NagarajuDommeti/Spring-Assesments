@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+               http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="acc" class="com.main.Account" autowire="byType">
+		<property name="accNo" value="12345"></property>
+		<property name="balance" value="100000.50"></property>
+		<property name="loan" ref="loan"></property>
+	</bean>
+
+	<bean id="cust" class="com.main.Customer" >
+		<property name="id" value="122026"></property>
+		<property name="name" value="Nagaraju"></property>
+		<property name="account" ref="acc"></property>
+	</bean>
+
+	<bean id="loan" class="com.main.Loan" autowire="byType">
+		<property name="pLoan" ref="pLoan"></property>
+		<property name="eLoan" ref="eLoan"></property>
+	</bean>
+
+	<bean id="pLoan" class="com.main.PersonalLoan" autowire="byType">
+		<property name="loanAmount" value="100000"></property>
+		<property name="minAmount" value="500"></property>
+	</bean>
+
+	<bean id="eLoan" class="com.main.EducationalLoan" autowire="byType">
+		<property name="loanAmount" value="100000"></property>
+		<property name="minAmount" value="500"></property>
+	</bean>
+
+</beans>
